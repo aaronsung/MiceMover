@@ -12,8 +12,8 @@ A simple Visual Basic Windows Forms application for controlling mouse cursor pos
 ## Requirements
 
 - Windows Operating System
-- .NET Framework 4.7.2 or higher
-- Visual Studio 2017 or higher (for building from source)
+- .NET 8 or higher
+- Visual Studio 2022 or higher (for building from source)
 
 ## Building the Application
 
