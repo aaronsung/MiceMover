@@ -23,9 +23,17 @@ A simple Visual Basic Windows Forms application for controlling mouse cursor pos
 
 ### Command Line Build
 
-You can also build from the command line using MSBuild:
+You can also build from the command line using the .NET CLI or MSBuild:
 
 ```bash
+# Using .NET CLI (recommended)
+# For Debug build
+dotnet build MiceMover.sln
+
+# For Release build
+dotnet build MiceMover.sln -c Release
+
+# Using MSBuild
 # For Debug build
 msbuild MiceMover.sln /p:Configuration=Debug
 
