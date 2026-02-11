@@ -24,8 +24,8 @@ Partial Class Form1
     Private Sub InitializeComponent()
         components = New System.ComponentModel.Container()
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(800, 450)
-        Text = "Form1"
+        ClientSize = New Size(400, 300)
+        Text = "MiceMover - Mouse Position Controller"
     End Sub
 
 End Class

@@ -34,14 +34,16 @@ Public Class Form1
     End Sub
 
     Private Sub InitializeCustomComponents()
-        Me.Text = "MiceMover - Mouse Position Controller"
-        Me.Size = New System.Drawing.Size(400, 300)
+        ' Remove the redundant settings since they're now in InitializeComponent
         Me.StartPosition = FormStartPosition.CenterScreen
         Me.FormBorderStyle = FormBorderStyle.FixedDialog
         Me.MaximizeBox = False
 
-        ' Initialize Timer
-        tmrUpdatePos = New Timer()
+        ' Initialize Timer and add to components for proper disposal
+        If components Is Nothing Then
+            components = New System.ComponentModel.Container()
+        End If
+        tmrUpdatePos = New Timer(components)
         tmrUpdatePos.Interval = 100 ' Update every 100ms
         tmrUpdatePos.Enabled = True
 
@@ -124,7 +126,13 @@ Public Class Form1
         Dim y As Integer
 
         If Integer.TryParse(txtX.Text, x) AndAlso Integer.TryParse(txtY.Text, y) Then
-            SetCursorPos(x, y)
+            ' Validate coordinates are within reasonable bounds
+            Dim screenBounds As Rectangle = Screen.PrimaryScreen.Bounds
+            If x < 0 OrElse x >= screenBounds.Width OrElse y < 0 OrElse y >= screenBounds.Height Then
+                MessageBox.Show($"Coordinates must be within screen bounds (0-{screenBounds.Width - 1}, 0-{screenBounds.Height - 1}).", "Out of Bounds", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Else
+                SetCursorPos(x, y)
+            End If
         Else
             MessageBox.Show("Please enter valid integer values for X and Y coordinates.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning)
         End If
