@@ -1,10 +1,11 @@
-Imports System.Windows.Forms
+﻿Friend Module Program
 
-Module Program
     <STAThread()>
-    Sub Main()
+    Friend Sub Main(args As String())
+        Application.SetHighDpiMode(HighDpiMode.SystemAware)
         Application.EnableVisualStyles()
         Application.SetCompatibleTextRenderingDefault(False)
-        Application.Run(New MainForm())
+        Application.Run(New Form1)
     End Sub
+
 End Module

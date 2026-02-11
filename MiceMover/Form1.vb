@@ -1,8 +1,7 @@
-Imports System.Windows.Forms
+﻿Imports System.Windows.Forms
 Imports System.Runtime.InteropServices
 
-Public Class MainForm
-    Inherits Form
+Public Class Form1
 
     Private WithEvents btnMoveCenter As Button
     Private WithEvents btnMoveTopLeft As Button
@@ -31,9 +30,10 @@ Public Class MainForm
 
     Public Sub New()
         InitializeComponent()
+        InitializeCustomComponents()
     End Sub
 
-    Private Sub InitializeComponent()
+    Private Sub InitializeCustomComponents()
         Me.Text = "MiceMover - Mouse Position Controller"
         Me.Size = New System.Drawing.Size(400, 300)
         Me.StartPosition = FormStartPosition.CenterScreen
